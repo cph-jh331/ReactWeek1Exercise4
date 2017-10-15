@@ -20,9 +20,9 @@ class CountryTable extends Component {
       </tr>
     );
 
-  moreThanOne = (array) => {
+  moreThanOne = array => {
     if (array.length > 1) {
-      return <td>{array[0] + " +(" + (array.length - 1) + ")"}</td>
+      return <td>{array[0] + " (+" + (array.length - 1) + ")"}</td>
     }
     return <td>{array[0]}</td>
   }

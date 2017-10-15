@@ -19,6 +19,17 @@ class CountryFactory {
     this.cStore.setObserver(handler);
     this.cStore.getCountriesAndNotify();
   }
+
+  getCountriesCont = (time, handler) => {
+    this.cStore.setObserver(handler);
+    this.timerId = setInterval(this.cStore.getCountriesAndNotify, time);
+  }
+
+  stopIntervalFetching = () => {
+    if (this.timerId) {
+      clearInterval(this.timerId);
+    }
+  }
 }
 
 export default new CountryFactory();

@@ -11,8 +11,13 @@ class App extends Component {
 
   componentDidMount() {
     const factory = this.props.factory;
-    factory.getCountries(this.countriesUpdater);
+    //factory.getCountries(this.countriesUpdater);
+    factory.getCountriesCont(3000, this.countriesUpdater);
     factory.getLabels(this.labelsUpdater);
+  }
+
+  componentWillUnmount(){
+    this.props.factory.stopIntervalFectching();
   }
 
   countriesUpdater = data => {

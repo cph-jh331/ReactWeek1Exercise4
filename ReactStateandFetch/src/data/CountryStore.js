@@ -3,7 +3,6 @@ const myHeaders = new Headers({ "Content-Type": "application/json" });
 class CountryStore {
 
     getCountriesAndNotify = () => {
-        console.log("bob");
         fetch(URL,
             {
                 method: "GET",

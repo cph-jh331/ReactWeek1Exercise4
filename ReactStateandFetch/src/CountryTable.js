@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 class CountryTable extends Component {
 
-  labelRow = () =>
-    this.props.labels.map(label => <th key={label}>{label}</th>);
+  labelRow = () => this.props.labels.map(label => <th key={label}>{label}</th>);
 
   countryRows = () =>
     this.props.countries.map(country =>

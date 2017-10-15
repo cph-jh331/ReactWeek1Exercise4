@@ -1,12 +1,26 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import CountryTable from "./CountryTable";
 import './App.css';
 
 class App extends Component {
-  
-  constructor(props){
-    super(props);
 
+  constructor(props) {
+    super(props);
+    this.state = { countries: [], labels: [] }
+  }
+
+  componentDidMount() {
+    const factory = this.props.factory;
+    factory.getCountries(this.countriesUpdater);
+    factory.getLabels(this.labelsUpdater);
+  }
+
+  countriesUpdater = data => {
+    this.setState({ countries: data });
+  }
+
+  labelsUpdater = data => {
+    this.setState({ labels: data });
   }
 
   render() {
@@ -17,8 +31,8 @@ class App extends Component {
         </div>
         <div className="App-intro">
           <p>Your initial task is to fetch data from the server (see exercise for how to start it),
-           and create a table below, with these data</p>          
-          <CountryTable/>
+           and create a table below, with these data</p>
+          <CountryTable countries={this.state.countries} labels={this.state.labels} />
         </div>
       </div>
     );

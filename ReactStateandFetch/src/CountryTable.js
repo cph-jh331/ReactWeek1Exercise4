@@ -12,13 +12,20 @@ class CountryTable extends Component {
         <td>{country.region}</td>
         <td>{country.population}</td>
         <td>{country.area}</td>
-        <td>{country.timezones.join(",\n")}</td>
-        <td>{country.borders.join(",\n")}</td>
-        <td>{country.topLevelDomain.join(",\n")}</td>
-        <td>{country.currencies.join(",\n")}</td>
-        <td>{country.languages.join(",\n")}</td>
+        {this.moreThanOne(country.timezones)}
+        {this.moreThanOne(country.borders)}
+        {this.moreThanOne(country.topLevelDomain)}
+        {this.moreThanOne(country.currencies)}
+        {this.moreThanOne(country.languages)}
       </tr>
     );
+
+  moreThanOne = (array) => {
+    if (array.length > 1) {
+      return <td>{array[0] + " +(" + (array.length - 1) + ")"}</td>
+    }
+    return <td>{array[0]}</td>
+  }
 
   render() {
     return (
